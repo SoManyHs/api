@@ -69,7 +69,7 @@ Resources:
     Type: 'AWS::RDS::DBClusterParameterGroup'
     Properties:
       Description: !Ref 'AWS::StackName'
-      Family: 'aurora-postgresql10'
+      Family: 'aurora-postgresql11'
       Parameters:
         client_encoding: 'UTF8'
 
@@ -98,19 +98,12 @@ Resources:
       MasterUserPassword: !Join ['', ['{{resolve:secretsmanager:', !Ref AuroraMasterSecret, ':SecretString:password}}' ]]
       DatabaseName: 'votes'
       Engine: aurora-postgresql
-      EngineVersion: '10.7'
-      EngineMode: serverless
       StorageEncrypted: true
       KmsKeyId: !Ref AuroraKMSCMK
       DBClusterParameterGroupName: !Ref DBClusterParameterGroup
       DBSubnetGroupName: !Ref DBSubnetGroup
       VpcSecurityGroupIds:
         - !Ref ClusterSecurityGroup
-      ScalingConfiguration:
-        AutoPause: true
-        MinCapacity: 2
-        MaxCapacity: 8
-        SecondsUntilAutoPause: 1000
 
 Outputs:
   RdsEndpoint: # injected as RDS_ENDPOINT environment variable by Copilot.
