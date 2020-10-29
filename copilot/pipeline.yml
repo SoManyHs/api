@@ -1,7 +1,7 @@
 # This YAML file defines the relationship and deployment ordering of your environments.
 
 # The name of the pipeline
-name: pipeline-voting-app-copilot-example-voting-app-api
+name: pipeline-voting-app-SoManyHs-api
 
 # The version of the schema used in this template
 version: 1
@@ -16,7 +16,7 @@ source:
   properties:
     access_token_secret: github-token-voting-app-api
     branch: main
-    repository: https://github.com/copilot-example-voting-app/api
+    repository: https://github.com/SoManyHs/api
 
 # The deployment section defines the order the pipeline will deploy
 # to your environments.
@@ -25,13 +25,6 @@ stages:
       name: test
       # Optional: flag for manual approval action before deployment.
       # requires_approval: true
-      # Optional: use test commands to validate this stage of your build.
-      # test_commands: [echo 'running tests', make test]
-
-    - # The name of the environment to deploy to.
-      name: prod-iad
-      # Optional: flag for manual approval action before deployment.
-      requires_approval: true
       # Optional: use test commands to validate this stage of your build.
       # test_commands: [echo 'running tests', make test]
 
